@@ -20,10 +20,8 @@ bool gameIsRunning = true;
 ShaderProgram program;
 glm::mat4 viewMatrix, modelMatrix, titleMatrix, starMatrix1, starMatrix2, projectionMatrix;
 
-float triangle_translate = 0;
-float triangle_scale = 1.0f;
-float star_rotate = 0;
-float star_scale = 1;
+float player_speed = 1.0f;
+
 
 GLuint playerTextureID;
 GLuint titleTextureID;
@@ -87,8 +85,19 @@ void Initialize() {
 void ProcessInput() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_QUIT || event.type == SDL_WINDOWEVENT_CLOSE){
+		switch (event.type){
+		case SDL_QUIT:
+		case SDL_WINDOWEVENT_CLOSE:
 			gameIsRunning = false;
+			break;
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym) {
+			case SDLK_UP:
+				break;
+			case SDLK_DOWN:
+				break;
+			}
+			break; 
 		}
 	}
 }
@@ -101,35 +110,12 @@ void Update() {
 	float deltaTime = ticks - lastTicks;
 	lastTicks = ticks;
 
+	player_position += player_movement * player_speed * dletaTime;
 
-	
-	titleMatrix = glm::mat4(1.0f);
-	titleMatrix = glm::translate(titleMatrix, glm::vec3(0.0f, 0.8f, 0.0f));
-	titleMatrix = glm::scale(titleMatrix, glm::vec3(6.0f, 3.0f, 1.0f));
-	
-	if (triangle_translate > -1.0f) {
-		modelMatrix = glm::mat4(1.0f);
-		modelMatrix = glm::scale(modelMatrix, glm::vec3(2.0f, 2.0f, 1.0f));
-		triangle_translate -= 0.3f * deltaTime;
-		modelMatrix = glm::translate(modelMatrix, glm::vec3(0.0f, triangle_translate, 0.0f));
-		
-	}
+	modelMatrix = glm:mat4(1.0f);
+	modelMatrix = glm:translate(modelMatrix, player_position);
 
-	float star_scale = triangle_translate;
-	starMatrix1 = glm::mat4(1.0f);
-	starMatrix2 = glm::mat4(1.0f);
-	
-	starMatrix1 = glm::translate(starMatrix1, glm::vec3(4.0f, 0.0f, 0.0f));
-	starMatrix2 = glm::translate(starMatrix2, glm::vec3(-4.0f, 0.0f, 0.0f));
 
-	
-	star_scale += 0.1 * deltaTime;
-	starMatrix1 = glm::scale(starMatrix1, glm::vec3(star_scale, star_scale, 0.0f));
-	starMatrix2 = glm::scale(starMatrix2, glm::vec3(star_scale, star_scale, 0.0f));
-
-	star_rotate += 480.0f * deltaTime;
-	starMatrix1 = glm::rotate(starMatrix1, glm::radians(star_rotate), glm::vec3(0.0f, 0.0f, 1.0f));
-	starMatrix2 = glm::rotate(starMatrix2, glm::radians(-star_rotate), glm::vec3(0.0f, 0.0f, 1.0f));
 }
 
 void Render() {
