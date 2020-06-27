@@ -29,10 +29,9 @@ bool ball_moving = false;
 glm::vec3 ball_position = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 ball_movement = glm::vec3(0.0f, 0.0f, 0.0f);
 
-glm::vec3 player1_position = glm::vec3(9.5f, 0.0f, 0.0f);
+glm::vec3 player1_position = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 player1_movement = glm::vec3(0.0f, 0.0f, 0.0f);
-glm::vec3 player2_position = glm::vec3(-9.5f, 0.0f, 0.0f);
-glm::vec3 player2_movement = glm::vec3(0.0f, 0.0f, 0.0f);
+
 
 float player_speed = 2.7f;
 float ball_speed = 20.0f;
@@ -75,7 +74,6 @@ void Initialize() {
 void ProcessInput() {
 
 	player1_movement = glm::vec3(0);
-	player2_movement = glm::vec3(0);
 
 
 	SDL_Event event;
@@ -90,24 +88,8 @@ void ProcessInput() {
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym) {
 			case SDLK_SPACE:
-				ball_moving = true;
-				int random = time(NULL) % 4;
-				if (random == 0){
-					ball_movement.x = 1;
-					ball_movement.y = 1;
-				}
-				else if (random == 3) {
-					ball_movement.x = -1;
-					ball_movement.y = 1;
-				}
-				else if (random == 1) {
-					ball_movement.x = 1;
-					ball_movement.y = -1;
-				}
-				else {
-					ball_movement.x = -1;
-					ball_movement.y = -1;
-				}
+				lander_moving = true;
+				
 				
 				
 				break;
@@ -117,26 +99,15 @@ void ProcessInput() {
 	}
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 	
-	if (keys[SDL_SCANCODE_UP] && !(keys[SDL_SCANCODE_DOWN])) {
-		if (player1_position.y < 1.4f) {
-			player1_movement.y = 1.0f;
-		}
+	if (keys[SDL_SCANCODE_RIGHT] && !(keys[SDL_SCANCODE_LEFT])) {
+			player1_movement.x = 1.0f;
+
 	}
-	if (keys[SDL_SCANCODE_DOWN] && !(keys[SDL_SCANCODE_UP])) {
-		if (player1_position.y > -1.4f) {
-			player1_movement.y = -1.0f;
-		}
+	if (keys[SDL_SCANCODE_LEFT] && !(keys[SDL_SCANCODE_RIGHT])) {
+			player1_movement.x = -1.0f;
+
 	}
-	if (keys[SDL_SCANCODE_W] && !(keys[SDL_SCANCODE_S])) {
-		if (player2_position.y < 1.4f) {
-			player2_movement.y = 1.0f;
-		}
-	}
-	if (keys[SDL_SCANCODE_S] && !(keys[SDL_SCANCODE_W])) {
-		if (player2_position.y > -1.4f) {
-			player2_movement.y = -1.0f;
-		}
-	}
+	
 
 
 	if (glm::length(player1_movement) > 1.0f) {

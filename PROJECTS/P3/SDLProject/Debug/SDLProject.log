@@ -1,0 +1,8 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDLProject.vcxproj, SDLProject1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\main.cpp(28,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\main.cpp(145,44): warning C4804: '<': unsafe use of type 'bool' in operation
+D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\main.cpp(146,22): warning C4553: '==': result of expression not used; did you intend '='?
+D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\main.cpp(171,22): warning C4305: '+=': truncation from 'double' to 'float'
+D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\main.cpp(176,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  SDLProject.vcxproj -> D:\docs 2\GitHub\CS3113\PROJECTS\P3\SDLProject\Debug\SDLProject2.exe
