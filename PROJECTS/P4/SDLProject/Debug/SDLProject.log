@@ -1,0 +1,6 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDLProject.vcxproj, SDLProject1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+D:\docs 2\GitHub\CS3113\PROJECTS\P4\SDLProject\main.cpp(70,20): warning C4018: '<': signed/unsigned mismatch
+D:\docs 2\GitHub\CS3113\PROJECTS\P4\SDLProject\main.cpp(166,28): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs 2\GitHub\CS3113\PROJECTS\P4\SDLProject\main.cpp(167,27): warning C4305: '=': truncation from 'double' to 'float'
+  SDLProject.vcxproj -> D:\docs 2\GitHub\CS3113\PROJECTS\P4\SDLProject\Debug\SDLProject2.exe
