@@ -157,6 +157,10 @@
     <Image Include="ctg.png" />
     <Image Include="platformPack_tile001.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\1song_3.mp3" />
+    <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\final project\jump.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

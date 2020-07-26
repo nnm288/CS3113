@@ -13,6 +13,8 @@
 #include <vector>
 
 
+#include <SDL_Mixer.h>
+
 #include "Util.h"
 #include "Entity.h"
 #include "Map.h"
@@ -22,6 +24,9 @@
 #include "Level2.h"
 #include "Level3.h"
 
+
+Mix_Music* music;
+Mix_Chunk* jump_sfx;
 
 SDL_Window* displayWindow;
 bool gameIsRunning = true;
@@ -47,10 +52,16 @@ glm::mat4 viewMatrix, modelMatrix, projectionMatrix;
 
 
 void Initialize() {
-	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 	displayWindow = SDL_CreateWindow("Textured!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
 	SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
 	SDL_GL_MakeCurrent(displayWindow, context);
+	
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+	music = Mix_LoadMUS("1song_3.mp3");
+	jump_sfx = Mix_LoadWAV("jump.wav");
+	Mix_PlayMusic(music, -1);
+	Mix_VolumeMusic(MIX_MAX_VOLUME / 4);
 
 	#ifdef _WINDOWS
 		glewInit();
@@ -74,13 +85,17 @@ void Initialize() {
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
+	
 
 	sceneList[0] = new Menu();
 	sceneList[1] = new Level1();
 	sceneList[2] = new Level2();
 	sceneList[3] = new Level3();
 	SwitchToScene(sceneList[0]);
-	currentScene->state.player->health = 2;
+	
+	
+
+
 }
 
 void ProcessInput() {
@@ -107,6 +122,7 @@ void ProcessInput() {
 
 			case SDLK_SPACE:
 				if (currentScene->state.player->collidedBot) {
+					Mix_PlayChannel(-1, jump_sfx, 0);
 					currentScene->state.player->jump = true;
 				}
 				break;

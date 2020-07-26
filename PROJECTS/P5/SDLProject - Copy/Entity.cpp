@@ -265,10 +265,12 @@ void Entity::Update(float deltaTime, Entity* player, Entity* enemy, int enemyCou
 			}
 			reset = true;
 		}
+		if (position.x < 4) {
+			position.x= position.x+0.1;
+		}
 	}
 	if (entityType == ENEMY) {
 		AI(player);
-		
 		
 	}
 

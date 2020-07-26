@@ -43,9 +43,9 @@ void Menu::Initialize() {
 	state.player->jumpPower = 4.5f;
 
 
-
+	/*
 	state.enemies = new Entity[ENEMY_COUNT_M];
-	GLuint enemyTextureID = Util::LoadTexture("ctg.png");
+GLuint enemyTextureID = Util::LoadTexture("ctg.png");
 
 	for (int i = 0; i < ENEMY_COUNT_M; i++) {
 		state.enemies[i].entityType = ENEMY;
@@ -59,7 +59,7 @@ void Menu::Initialize() {
 
 	state.enemies[0].aiType = FOLLOWER;
 	state.enemies[0].position = glm::vec3(2, -3.75, 0);
-
+	*/
 
 	
 
@@ -74,8 +74,8 @@ void Menu::Update(float deltaTime) {
 void Menu::Render(ShaderProgram* program) {
 	state.map->Render(program);
 	//state.player->Render(program);
-	for (int i = 0; i < ENEMY_COUNT_M; i++) {
-		state.enemies[i].Render(program);
-
-	}
+	//for (int i = 0; i < ENEMY_COUNT_M; i++) {
+	//	state.enemies[i].Render(program);
+	//
+	//}
 }
