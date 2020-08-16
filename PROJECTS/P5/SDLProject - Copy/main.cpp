@@ -106,11 +106,11 @@ void Initialize() {
 	sceneList[5] = new End();
 	SwitchToScene(sceneList[0]);
 	
-	texList[0] = Util::LoadTexture("ctg.png");
-	texList[1] = Util::LoadTexture("ctg2.png");
-	texList[2] = Util::LoadTexture("ctgh1.png");
-	texList[3] = Util::LoadTexture("george_1.png");
-	texList[4] = Util::LoadTexture("george_0.png");
+	texList[0] = Util::LoadTexture("baddy3.png");
+	texList[1] = Util::LoadTexture("baddy2.png");
+	texList[2] = Util::LoadTexture("baddy1.png");
+	texList[3] = Util::LoadTexture("playertext1.png");
+	texList[4] = Util::LoadTexture("playertext.png");
 	Mix_PlayMusic(music, -1);
 
 }
@@ -294,7 +294,7 @@ void Render() {
 
 
 
-	GLuint font = Util::LoadTexture("font1.png");
+	GLuint font = Util::LoadTexture("fnt.png");
 
 	
 	if (currentScene == sceneList[0]) {

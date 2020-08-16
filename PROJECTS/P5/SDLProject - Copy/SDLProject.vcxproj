@@ -156,13 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\tileset.png" />
-    <Image Include="ctg1.png" />
-    <Image Include="ctg2.png" />
-    <Image Include="ctgh1.png" />
-    <Image Include="font1.png" />
-    <Image Include="george_0.png" />
-    <Image Include="ctg.png" />
-    <Image Include="george_1.png" />
+    <Image Include="star.png" />
+    <Image Include="baddy2.png" />
+    <Image Include="baddy1.png" />
+    <Image Include="fnt.png" />
+    <Image Include="playertext.png" />
+    <Image Include="baddy3.png" />
+    <Image Include="playertext1.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\1song_3.mp3" />

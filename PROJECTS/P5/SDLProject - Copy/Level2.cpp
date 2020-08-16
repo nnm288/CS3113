@@ -109,7 +109,7 @@ void Level2::Initialize() {
 	// Move over all of the player and enemy code from initialization.
 
 	// Initialize Player
-	GLuint playerTextureID = Util::LoadTexture("george_0.png");
+	//GLuint playerTextureID = Util::LoadTexture("george_0.png");
 
 	state.player = new Entity();
 	state.player->entityType = PLAYER;
@@ -117,7 +117,7 @@ void Level2::Initialize() {
 	state.player->movement = glm::vec3(0);
 	state.player->acceleration = glm::vec3(0, -3.81f, 0);
 	state.player->speed = 2.0f;
-	state.player->textureID = playerTextureID;
+	//state.player->textureID = playerTextureID;
 
 	state.player->animRight = new int[4]{ 3, 7, 11, 15 };
 	state.player->animLeft = new int[4]{ 1, 5, 9, 13 };
@@ -139,11 +139,11 @@ void Level2::Initialize() {
 
 
 	state.enemies = new Entity[ENEMY_COUNT_2];
-	GLuint enemyTextureID = Util::LoadTexture("ctg.png");
+	//GLuint enemyTextureID = Util::LoadTexture("ctg.png");
 
 	for (int i = 0; i < ENEMY_COUNT_2; i++) {
 		state.enemies[i].entityType = ENEMY;
-		state.enemies[i].textureID = enemyTextureID;
+		//state.enemies[i].textureID = enemyTextureID;
 		state.enemies[i].position = glm::vec3(0, 0, 0);
 		state.enemies[i].movement = glm::vec3(0);
 		state.enemies[i].acceleration = glm::vec3(0, -4.1f, 0);
@@ -157,7 +157,7 @@ void Level2::Initialize() {
 
 
 	state.pup = new Entity[PUP_COUNT_2];
-	GLuint pupTextureID = Util::LoadTexture("ctg1.png");
+	GLuint pupTextureID = Util::LoadTexture("star.png");
 
 	for (int i = 0; i < PUP_COUNT_2; i++) {
 		state.pup[i].entityType = PUP;
