@@ -1,19 +1,104 @@
 #include "Level1.h"
-#define LEVEL1_WIDTH 19
-#define LEVEL1_HEIGHT 8
+#define LEVEL1_WIDTH 11
+#define LEVEL1_HEIGHT 92
 #define ENEMY_COUNT_1 1
+#define PUP_COUNT_1 4
 
 
 unsigned int level1_data[] =
 {
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,0,0,0,0,0,
- 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2,0,0,0,0,0,
- 3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,0,0,0,1,1,
- 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,0,0,0,2,2
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 2, 2, 2, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 2, 2, 2, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 
+ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
 };
 
 void Level1::Initialize() {
@@ -24,13 +109,15 @@ void Level1::Initialize() {
 	// Move over all of the player and enemy code from initialization.
 
 	// Initialize Player
+	GLuint playerTextureID = Util::LoadTexture("george_0.png");
+	
 	state.player = new Entity();
 	state.player->entityType = PLAYER;
-	state.player->position = glm::vec3(5, 0, 0);
+	state.player->position = glm::vec3(7, -87, 0);
 	state.player->movement = glm::vec3(0);
-	state.player->acceleration = glm::vec3(0, -5.81f, 0);
+	state.player->acceleration = glm::vec3(0, -3.81f, 0);
 	state.player->speed = 2.0f;
-	state.player->textureID = Util::LoadTexture("george_0.png");
+	state.player->textureID = playerTextureID;
 
 	state.player->animRight = new int[4]{ 3, 7, 11, 15 };
 	state.player->animLeft = new int[4]{ 1, 5, 9, 13 };
@@ -48,7 +135,7 @@ void Level1::Initialize() {
 	
 	state.player->height = 0.8;
 	state.player->width = 0.3;
-	state.player->jumpPower = 4.5f;
+	state.player->jumpPower = 8.5f;
 
 
 	state.enemies = new Entity[ENEMY_COUNT_1];
@@ -59,31 +146,56 @@ void Level1::Initialize() {
 		state.enemies[i].textureID = enemyTextureID;
 		state.enemies[i].position = glm::vec3(0, 0, 0);
 		state.enemies[i].movement = glm::vec3(0);
-		state.enemies[i].acceleration = glm::vec3(0, -5.1f, 0);
+		state.enemies[i].acceleration = glm::vec3(0, -4.1f, 0);
 		state.enemies[i].speed = 1.13;
 
 	}
 
-	state.enemies[0].aiType = FOLLOWER;
-	state.enemies[0].position = glm::vec3(2, -3.75, 0);
+	state.enemies[0].aiType = WALKER;
+	state.enemies[0].aiState = LWALKING;
+	state.enemies[0].position = glm::vec3(4, -85, 0);
+	
+	
+	state.pup= new Entity[PUP_COUNT_1];
+	GLuint pupTextureID = Util::LoadTexture("ctg1.png");
+
+	for (int i = 0; i < PUP_COUNT_1; i++) {
+		state.pup[i].entityType = PUP;
+		state.pup[i].textureID = pupTextureID;
+	}
+	state.pup[0].position = glm::vec3(7, -80, 0);
+	state.pup[1].position = glm::vec3(5.3, -57, 0);
+	state.pup[2].position = glm::vec3(6, -46, 0);
+	state.pup[2].position = glm::vec3(4, -19, 0);
 
 
 }
 void Level1::Update(float deltaTime) {
-	state.player->Update(deltaTime, state.player, state.enemies, ENEMY_COUNT_1, state.map);
-	if (state.player->position.x >= 17) {
+	state.player->Update(deltaTime, state.player, state.enemies, ENEMY_COUNT_1, state.pup, PUP_COUNT_1, state.map);
+	if (state.player->position.y >= -1.9) {
 		state.nextScene = 2;
 	}
 	for (int i = 0; i < ENEMY_COUNT_1; i++) {
-		state.enemies[i].Update(deltaTime, state.player,state.enemies,ENEMY_COUNT_1,state.map);
+		state.enemies[i].Update(deltaTime, state.player,state.enemies,ENEMY_COUNT_1, state.pup, PUP_COUNT_1, state.map);
 
 	}
+	for (int i = 0; i < PUP_COUNT_1; i++) {
+		state.pup[i].Update(deltaTime, state.player, state.enemies, ENEMY_COUNT_1, state.pup, PUP_COUNT_1, state.map);
+
+	}
+
+
+	
 }
 void Level1::Render(ShaderProgram* program) {
 	state.map->Render(program);
 	state.player->Render(program);
 	for (int i = 0; i < ENEMY_COUNT_1; i++) {
 		state.enemies[i].Render(program);
+
+	}
+	for (int i = 0; i < PUP_COUNT_1; i++) {
+		state.pup[i].Render(program);
 
 	}
 }

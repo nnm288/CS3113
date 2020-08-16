@@ -7,8 +7,7 @@ GLuint Util::LoadTexture(const char* filePath) {
 	unsigned char* image = stbi_load(filePath, &w, &h, &n, STBI_rgb_alpha);
 
 	if (image == NULL) {
-		std::cout << "Unable to load image. Make sure the path is correct\n";
-		assert(false);
+		//image = stbi_load("ctg1.png", &w, &h, &n, STBI_rgb_alpha);
 	}
 
 	GLuint textureID;

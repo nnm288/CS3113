@@ -13,7 +13,7 @@
 #include "ShaderProgram.h"
 #include "Map.h"
 
-enum EntityType { PLAYER, PLATFORM, ENEMY };
+enum EntityType { PLAYER, PLATFORM, ENEMY, PUP};
 
 enum AIType { WALKER, JUMPER, FOLLOWER};
 
@@ -39,6 +39,7 @@ public:
 	bool win = false;
 
 	bool jump = false;
+	bool extra_jump = false;
 	float jumpPower = 0;
 	float speed;
 
@@ -69,6 +70,12 @@ public:
 	bool e_collidedBot = false;
 	bool e_collidedLeft = false;
 	bool e_collidedRight = false;
+	
+	bool p_collidedTop = false;
+	bool p_collidedBot = false;
+	bool p_collidedLeft = false;
+	bool p_collidedRight = false;
+
 
 	Entity();
 
@@ -78,7 +85,7 @@ public:
 	void CheckCollisionsX(Map* map);
 	void CheckCollisionsY(Map* map);
 
-	void Update(float deltaTime, Entity* player, Entity* enemy, int enemyCount, Map* map);
+	void Update(float deltaTime, Entity* player, Entity* enemy, int enemyCount, Entity* pup, int pupCount, Map* map);
 	void Render(ShaderProgram* program);
 	void DrawSpriteFromTextureAtlas(ShaderProgram* program, GLuint textureID, int index);
 	

@@ -128,8 +128,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="End.cpp" />
     <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Level2.cpp" />
+    <ClCompile Include="Level4.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -140,10 +142,12 @@
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="End.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="Level2.h" />
     <ClInclude Include="Level3.h" />
+    <ClInclude Include="Level4.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Map.h" />
@@ -152,14 +156,19 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\tileset.png" />
+    <Image Include="ctg1.png" />
+    <Image Include="ctg2.png" />
+    <Image Include="ctgh1.png" />
     <Image Include="font1.png" />
     <Image Include="george_0.png" />
     <Image Include="ctg.png" />
-    <Image Include="platformPack_tile001.png" />
+    <Image Include="george_1.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\1song_3.mp3" />
     <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\final project\jump.wav" />
+    <Media Include="bonk.wav" />
+    <Media Include="deaf.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

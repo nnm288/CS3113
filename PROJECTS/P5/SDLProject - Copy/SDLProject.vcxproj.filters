@@ -45,6 +45,12 @@
     <ClCompile Include="Level3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="End.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ShaderProgram.h">
@@ -74,6 +80,12 @@
     <ClInclude Include="Level3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="End.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="ctg.png">
@@ -85,10 +97,19 @@
     <Image Include="george_0.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="platformPack_tile001.png">
+    <Image Include="..\..\..\..\..\tileset.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\..\..\..\..\tileset.png">
+    <Image Include="george_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ctg1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ctg2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ctgh1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -97,6 +118,12 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="..\..\..\..\..\..\Music\FL STUDIO\WIPS\final project\jump.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="bonk.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="deaf.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

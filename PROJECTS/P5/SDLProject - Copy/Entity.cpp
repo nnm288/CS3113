@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "Map.h"
+#include "Util.h"
 
 
 Entity::Entity()
@@ -32,18 +33,29 @@ void Entity::CheckCollisionsY(Entity* objects, int objectCount) {
 			float ydist = fabs(position.y - object->position.y);
 			float penetrationY = fabs(ydist - (height / 2.0f) - (object->height / 2.0f));
 			if (velocity.y > 0) {
-				e_collidedTop = true;
-				position.y -= penetrationY;
-				velocity.y = 0;
+				if (object->entityType == ENEMY) {
+					e_collidedTop = true;
+					position.y -= penetrationY;
+					velocity.y = 0;
+				}
+				else {
+					p_collidedTop = true;
+					object->isActive = false;
+				}
 
 			}
 			else if (velocity.y < 0) {
-				e_collidedBot = true;
+				
 				if (object->entityType == ENEMY) {
+					e_collidedBot = true;
+					position.y += penetrationY;
+					velocity.y = 0;
+				}
+				else {
+					p_collidedBot = true;
 					object->isActive = false;
 				}
-				position.y += penetrationY;
-				velocity.y = 0;
+				
 
 			}
 
@@ -55,8 +67,8 @@ void Entity::CheckCollisionsY(Map* map)
 {
 	// Probes for tiles
 	glm::vec3 top = glm::vec3(position.x, position.y + (height / 2), position.z);
-	glm::vec3 top_left = glm::vec3(position.x - (width / 2), position.y + (height / 2), position.z);
-	glm::vec3 top_right = glm::vec3(position.x + (width / 2), position.y + (height / 2), position.z);
+	glm::vec3 top_left = glm::vec3(position.x - (width / 2), position.y + (height/2), position.z);
+	glm::vec3 top_right = glm::vec3(position.x + (width / 2), position.y + (height/2), position.z);
 
 	glm::vec3 bottom = glm::vec3(position.x, position.y - (height / 2), position.z);
 	glm::vec3 bottom_left = glm::vec3(position.x - (width / 2), position.y - (height / 2), position.z);
@@ -65,17 +77,17 @@ void Entity::CheckCollisionsY(Map* map)
 	float penetration_x = 0;
 	float penetration_y = 0;
 	if (map->IsSolid(top, &penetration_x, &penetration_y) && velocity.y > 0) {
-		position.y -= penetration_y;
+		position.y += penetration_y;
 		velocity.y = 0;
 		collidedTop = true;
 	}
 	else if (map->IsSolid(top_left, &penetration_x, &penetration_y) && velocity.y > 0) {
-		position.y -= penetration_y;
+		position.y += penetration_y;
 		velocity.y = 0;
 		collidedTop = true;
 	}
 	else if (map->IsSolid(top_right, &penetration_x, &penetration_y) && velocity.y > 0) {
-		position.y -= penetration_y;
+		position.y += penetration_y;
 		velocity.y = 0;
 		collidedTop = true;
 	}
@@ -106,15 +118,28 @@ void Entity::CheckCollisionsX(Entity* objects, int objectCount) {
 			float xdist = fabs(position.x - object->position.x);
 			float penetrationX = fabs(xdist - (width / 2.0f) - (object->width / 2.0f));
 			if (velocity.x > 0) {
-				e_collidedRight = true;
-				position.x -= penetrationX;
-				velocity.x = 0;
+				if (object->entityType == ENEMY){
+					e_collidedRight = true;
+					position.x -= penetrationX;
+					velocity.x = 0;
+				}
+				else {
+					p_collidedRight = true;
+					object->isActive = false;
+				}
+				
 
 			}
-			else if (velocity.x < 0) {
-				e_collidedLeft = true;
-				position.x += penetrationX;
-				velocity.x = 0;
+			else  {
+				if (object->entityType == ENEMY) {
+					e_collidedLeft = true;
+					position.x += penetrationX;
+					velocity.x = 0;
+				}
+				else {
+					p_collidedLeft = true;
+					object->isActive = false;
+				}
 
 			}
 
@@ -124,8 +149,8 @@ void Entity::CheckCollisionsX(Entity* objects, int objectCount) {
 void Entity::CheckCollisionsX(Map* map)
 {
 	// Probes for tiles
-	glm::vec3 left = glm::vec3(position.x - (width / 2), position.y, position.z);
-	glm::vec3 right = glm::vec3(position.x + (width / 2), position.y, position.z);
+	glm::vec3 left = glm::vec3(position.x -(width / 2), position.y, position.z);
+	glm::vec3 right = glm::vec3(position.x +(width / 2), position.y, position.z);
 
 	float penetration_x = 0;
 	float penetration_y = 0;
@@ -146,24 +171,18 @@ void Entity::CheckCollisionsX(Map* map)
 void Entity::AIWalker(Entity* player) {
 	switch (aiState)
 	{
-	case IDLE:
-		movement = glm::vec3(0, 0, 0);
-		if (glm::distance(position, player->position) < 1.5f) {
-			aiState = RWALKING;
-		}
 	case LWALKING:
 		movement = glm::vec3(-1, 0, 0);
-		if (glm::distance(position, player->position) < 1.5f) {
-			aiState = RWALKING;
-		}
-		else if (position.x < -2.5f) {
+		if (position.x <= 1) {
 			aiState = RWALKING;
 		}
 		break;
 
 	case RWALKING:
 		movement = glm::vec3(1, 0, 0);
-		if (position.x > 1.9f) { aiState = LWALKING; }
+		if (position.x >= 9) { 
+			aiState = LWALKING;
+		}
 		break;
 	}
 }
@@ -223,7 +242,7 @@ void Entity::AI(Entity* player) {
 }
 
 
-void Entity::Update(float deltaTime, Entity* player, Entity* enemy, int enemyCount, Map* map)
+void Entity::Update(float deltaTime, Entity* player, Entity* enemy, int enemyCount, Entity* pup, int pupCount, Map* map)
 {
 	if (isActive == false) { return; }
 
@@ -237,20 +256,26 @@ void Entity::Update(float deltaTime, Entity* player, Entity* enemy, int enemyCou
 	e_collidedLeft = false;
 	e_collidedRight = false;
 
+
+	p_collidedTop = false;
+	p_collidedBot = false;
+	p_collidedLeft = false;
+	p_collidedRight = false;
+
 	velocity += acceleration * deltaTime;
+	position.x += velocity.x * deltaTime; // Move on X
+	CheckCollisionsX(map);
 
 	position.y += velocity.y * deltaTime; // Move on Y
 	CheckCollisionsY(map);
 	
 
-	position.x += velocity.x * deltaTime; // Move on X
-	CheckCollisionsX(map);
 	
 
 	if (entityType == PLAYER) {
 		CheckCollisionsY(enemy, enemyCount); // Fix if needed
 		CheckCollisionsX(enemy, enemyCount); // Fix if needed
-		if (e_collidedLeft || e_collidedRight || e_collidedTop) {
+		if (e_collidedLeft || e_collidedRight || e_collidedTop||e_collidedBot) {
 			if (health == 0){
 				isActive = false;
 
@@ -258,16 +283,19 @@ void Entity::Update(float deltaTime, Entity* player, Entity* enemy, int enemyCou
 			reset = true;
 
 		}
-		if (position.y < -9) { 
-			if (health == 0) {
-				isActive = false;
+		CheckCollisionsX(pup, pupCount);
+		CheckCollisionsY(pup, pupCount);
 
+		if (p_collidedLeft || p_collidedRight || p_collidedTop || p_collidedBot) {
+			extra_jump = true;
+
+		}
+		if (position.y < -86) {
+			for(int i = 0; i < pupCount; i++) {
+				pup[i].isActive = true;
 			}
-			reset = true;
 		}
-		if (position.x < 4) {
-			position.x= position.x+0.1;
-		}
+
 	}
 	if (entityType == ENEMY) {
 		AI(player);
